@@ -4,59 +4,83 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happy Birthday, Bernadette!</title>
+
+<!-- Google Font: Montserrat -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+
 <style>
   body {
     margin: 0;
     padding: 0;
+    font-family: 'Montserrat', sans-serif;
     text-align: center;
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb);
+    background: radial-gradient(circle at top, #ffe6f2, #ffc1e3, #ffb6c1);
     color: #fff;
-    overflow-x: hidden;
-    min-height: 100vh;
+    overflow: hidden;
   }
 
   h1 {
-    font-size: 2.5em;
     margin-top: 60px;
-    text-shadow: 0 0 15px rgba(255,255,255,0.8);
-    animation: glow 2s infinite alternate;
+    font-size: 2.5em;
+    color: #fff;
+    text-shadow: 0 0 20px #ff80bf, 0 0 30px #ff4da6;
+    animation: glow 2s ease-in-out infinite alternate;
   }
 
   @keyframes glow {
-    from { text-shadow: 0 0 15px #ffb6c1; }
-    to { text-shadow: 0 0 30px #ff69b4, 0 0 50px #ff1493; }
+    from { text-shadow: 0 0 15px #ff99cc; }
+    to { text-shadow: 0 0 35px #ff1493, 0 0 60px #ff4da6; }
   }
 
+  /* Cake Design */
   .cake {
-    width: 130px;
-    height: 120px;
-    background: pink;
-    margin: 60px auto 20px;
-    border-radius: 10px;
     position: relative;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    width: 180px;
+    height: 130px;
+    margin: 60px auto 20px;
+    background: linear-gradient(to top, #ff66b2 0%, #ff99cc 100%);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(255, 105, 180, 0.4);
   }
 
-  .candle {
-    width: 10px;
-    height: 45px;
-    background: #fff;
+  .cake::before {
+    content: '';
     position: absolute;
-    top: -45px;
-    left: 60px;
-    border-radius: 5px;
+    width: 100%;
+    height: 18px;
+    background: repeating-linear-gradient(
+      45deg,
+      #fff,
+      #fff 10px,
+      #ffb6c1 10px,
+      #ffb6c1 20px
+    );
+    bottom: 0;
+    border-radius: 0 0 12px 12px;
+  }
+
+  /* Candle */
+  .candle {
+    position: absolute;
+    width: 16px;
+    height: 60px;
+    background: #fff;
+    top: -60px;
+    left: 82px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(255,255,255,0.7);
   }
 
   .flame {
-    width: 12px;
-    height: 12px;
+    position: absolute;
+    width: 18px;
+    height: 18px;
     background: radial-gradient(circle, gold, orange, red);
     border-radius: 50%;
-    position: absolute;
-    top: -12px;
+    top: -18px;
     left: -1px;
     animation: flicker 0.25s infinite alternate;
+    box-shadow: 0 0 25px 8px rgba(255, 200, 0, 0.5);
   }
 
   @keyframes flicker {
@@ -65,51 +89,38 @@
   }
 
   p {
-    font-size: 1.2em;
+    font-size: 1.15em;
     margin: 0 20px 30px;
     color: #fff;
   }
 
   button {
-    background: #ff4081;
+    background: linear-gradient(90deg, #ff66b2, #ff1e63);
     color: white;
     border: none;
-    padding: 12px 22px;
-    border-radius: 25px;
+    padding: 12px 26px;
+    border-radius: 30px;
     cursor: pointer;
     font-size: 1em;
-    box-shadow: 0 4px 15px rgba(255, 64, 129, 0.5);
-    transition: all 0.3s;
+    font-weight: 600;
+    box-shadow: 0 6px 18px rgba(255, 64, 129, 0.4);
+    transition: all 0.3s ease;
   }
 
   button:hover {
-    background: #ff1e63;
     transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(255, 77, 166, 0.6);
   }
 
-  .confetti, .balloon {
-    position: absolute;
-    pointer-events: none;
-  }
-
-  .confetti {
-    width: 8px;
-    height: 8px;
-    background: #fff;
-    animation: fall 4s linear infinite;
-  }
-
-  @keyframes fall {
-    0% { transform: translateY(0); opacity: 1; }
-    100% { transform: translateY(100vh); opacity: 0; }
-  }
-
+  /* Balloons */
   .balloon {
-    width: 45px;
-    height: 60px;
+    position: absolute;
+    width: 55px;
+    height: 70px;
     border-radius: 50%;
-    background: rgba(255, 182, 193, 0.8);
-    animation: rise 9s linear infinite;
+    background: pink;
+    animation: rise 10s linear infinite;
+    box-shadow: 0 0 15px rgba(255, 182, 193, 0.8);
   }
 
   @keyframes rise {
@@ -117,11 +128,40 @@
     to { transform: translateY(-150px); }
   }
 
+  /* Confetti */
+  .confetti {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #fff;
+    animation: fall 3s linear infinite;
+  }
+
+  @keyframes fall {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(100vh); opacity: 0; }
+  }
+
+  /* Sparkling stars */
+  .star {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: #fff;
+    border-radius: 50%;
+    animation: twinkle 2s infinite ease-in-out;
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.5); }
+  }
+
   .signature {
     margin-top: 40px;
     font-size: 1.1em;
-    font-weight: bold;
     color: #fff;
+    font-weight: bold;
   }
 
   footer {
@@ -132,9 +172,9 @@
 
   @media (max-width: 600px) {
     h1 { font-size: 1.8em; margin-top: 40px; }
-    .cake { width: 100px; height: 100px; margin-top: 50px; }
-    p { font-size: 1em; }
-    button { font-size: 0.9em; padding: 10px 18px; }
+    .cake { width: 140px; height: 100px; margin-top: 40px; }
+    .candle { left: 62px; height: 50px; top: -50px; }
+    button { font-size: 0.9em; padding: 10px 20px; }
   }
 </style>
 </head>
@@ -153,21 +193,21 @@
   <span style="white-space: nowrap;">I love you so much — G-BOY</span>
 </p>
 
-<button onclick="window.open('https://www.youtube.com/watch?v=cIg6odS-fA0&list=RDcIg6odS-fA0&start_radio=1','_blank')">
+<button onclick="window.open('https://www.youtube.com/watch?v=3GwjfUFyY6M&list=RD3GwjfUFyY6M&start_radio=1','_blank')">
   🎵 Play Celebration 🎵
 </button>
 
-<div class="signature">Made with ❤️ just for you.</div>
+<div class="signature">Made with love and confetti!</div>
 <footer>✨ Let’s celebrate love and life! ✨</footer>
 
 <script>
   // Balloons
-  for (let i = 0; i < 12; i++) {
+  for (let i = 0; i < 14; i++) {
     let b = document.createElement('div');
     b.classList.add('balloon');
     b.style.left = Math.random() * 100 + 'vw';
-    b.style.background = `hsl(${Math.random() * 360}, 70%, 70%)`;
-    b.style.animationDuration = 5 + Math.random() * 5 + 's';
+    b.style.background = `hsl(${330 + Math.random() * 20}, 70%, 80%)`;
+    b.style.animationDuration = 5 + Math.random() * 6 + 's';
     document.body.appendChild(b);
   }
 
@@ -176,10 +216,20 @@
     let c = document.createElement('div');
     c.classList.add('confetti');
     c.style.left = Math.random() * 100 + 'vw';
-    c.style.background = ['#fff','#ff80bf','#ffcc00','#33ccff','#ff4da6'][Math.floor(Math.random()*5)];
+    c.style.background = ['#fff','#ff80bf','#ffccf2','#ff4da6','#ffb6c1'][Math.floor(Math.random()*5)];
     c.style.animationDuration = 2 + Math.random() * 4 + 's';
     c.style.animationDelay = Math.random() * 2 + 's';
     document.body.appendChild(c);
+  }
+
+  // Stars
+  for (let i = 0; i < 50; i++) {
+    let s = document.createElement('div');
+    s.classList.add('star');
+    s.style.left = Math.random() * 100 + 'vw';
+    s.style.top = Math.random() * 100 + 'vh';
+    s.style.animationDelay = Math.random() * 2 + 's';
+    document.body.appendChild(s);
   }
 </script>
 
