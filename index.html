@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happy Birthday, Bernadette!</title>
 
-<!-- Google Font: Montserrat -->
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
@@ -14,7 +13,7 @@
     padding: 0;
     font-family: 'Montserrat', sans-serif;
     text-align: center;
-    background: radial-gradient(circle at top, #ffe6f2, #ffc1e3, #ffb6c1);
+    background: linear-gradient(135deg, #ffc1e3, #d7b2ff, #ffd1b3);
     color: #fff;
     overflow: hidden;
   }
@@ -32,12 +31,11 @@
     to { text-shadow: 0 0 35px #ff1493, 0 0 60px #ff4da6; }
   }
 
-  /* Cake Design */
   .cake {
     position: relative;
     width: 180px;
     height: 130px;
-    margin: 60px auto 20px;
+    margin: 120px auto 30px;
     background: linear-gradient(to top, #ff66b2 0%, #ff99cc 100%);
     border-radius: 12px;
     box-shadow: 0 10px 30px rgba(255, 105, 180, 0.4);
@@ -47,7 +45,7 @@
     content: '';
     position: absolute;
     width: 100%;
-    height: 18px;
+    height: 20px;
     background: repeating-linear-gradient(
       45deg,
       #fff,
@@ -55,11 +53,29 @@
       #ffb6c1 10px,
       #ffb6c1 20px
     );
-    bottom: 0;
+    bottom: -20px;
     border-radius: 0 0 12px 12px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
   }
 
-  /* Candle */
+  /* Strawberry frosting drip */
+  .frosting {
+    position: absolute;
+    width: 100%;
+    height: 25px;
+    top: -25px;
+    background: #ffb6c1;
+    border-radius: 50%;
+    animation: drip 3s infinite ease-in-out;
+    z-index: 1;
+  }
+
+  @keyframes drip {
+    0%, 100% { height: 25px; }
+    50% { height: 35px; }
+  }
+
+  /* Candle with glow halo */
   .candle {
     position: absolute;
     width: 16px;
@@ -68,7 +84,8 @@
     top: -60px;
     left: 82px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(255,255,255,0.7);
+    box-shadow: 0 0 15px rgba(255,255,255,0.7);
+    z-index: 2;
   }
 
   .flame {
@@ -77,10 +94,10 @@
     height: 18px;
     background: radial-gradient(circle, gold, orange, red);
     border-radius: 50%;
-    top: -18px;
+    top: -20px;
     left: -1px;
-    animation: flicker 0.25s infinite alternate;
-    box-shadow: 0 0 25px 8px rgba(255, 200, 0, 0.5);
+    animation: flicker 0.25s infinite alternate, glowHalo 2s ease-in-out infinite alternate;
+    box-shadow: 0 0 25px 10px rgba(255, 200, 0, 0.6);
   }
 
   @keyframes flicker {
@@ -88,10 +105,15 @@
     to { transform: scale(1.3); opacity: 0.8; }
   }
 
+  @keyframes glowHalo {
+    0% { box-shadow: 0 0 25px 10px rgba(255,200,0,0.6); }
+    50% { box-shadow: 0 0 35px 15px rgba(255,220,50,0.8); }
+    100% { box-shadow: 0 0 25px 10px rgba(255,200,0,0.6); }
+  }
+
   p {
     font-size: 1.15em;
     margin: 0 20px 30px;
-    color: #fff;
   }
 
   button {
@@ -118,7 +140,6 @@
     width: 55px;
     height: 70px;
     border-radius: 50%;
-    background: pink;
     animation: rise 10s linear infinite;
     box-shadow: 0 0 15px rgba(255, 182, 193, 0.8);
   }
@@ -133,46 +154,50 @@
     position: absolute;
     width: 8px;
     height: 8px;
-    background: #fff;
-    animation: fall 3s linear infinite;
+    border-radius: 2px;
+    animation: fall 3s linear infinite, sparkle 1.5s infinite alternate;
   }
 
   @keyframes fall {
-    0% { transform: translateY(0); opacity: 1; }
-    100% { transform: translateY(100vh); opacity: 0; }
+    0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
   }
 
-  /* Sparkling stars */
-  .star {
+  @keyframes sparkle {
+    0%, 100% { box-shadow: 0 0 4px 2px rgba(255,255,255,0.4); }
+    50% { box-shadow: 0 0 8px 4px rgba(255,255,255,0.8); }
+  }
+
+  /* Floating musical notes */
+  .note {
     position: absolute;
-    width: 3px;
-    height: 3px;
-    background: #fff;
-    border-radius: 50%;
-    animation: twinkle 2s infinite ease-in-out;
+    font-size: 1.2em;
+    animation: noteRise linear infinite;
   }
 
-  @keyframes twinkle {
-    0%, 100% { opacity: 0.3; transform: scale(1); }
-    50% { opacity: 1; transform: scale(1.5); }
+  @keyframes noteRise {
+    0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(-150px) rotate(360deg); opacity: 0; }
   }
 
   .signature {
     margin-top: 40px;
     font-size: 1.1em;
-    color: #fff;
     font-weight: bold;
   }
 
   footer {
     margin-top: 25px;
-    font-size: 0.9em;
-    color: #ffe6f2;
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 0 12px #ff80bf;
   }
 
   @media (max-width: 600px) {
     h1 { font-size: 1.8em; margin-top: 40px; }
-    .cake { width: 140px; height: 100px; margin-top: 40px; }
+    .cake { width: 140px; height: 100px; margin-top: 70px; }
+    .frosting { top: -20px; }
     .candle { left: 62px; height: 50px; top: -50px; }
     button { font-size: 0.9em; padding: 10px 20px; }
   }
@@ -183,13 +208,14 @@
 <h1>🎉 Happy Birthday, my baby Bernadette! 🎂</h1>
 
 <div class="cake">
+  <div class="frosting"></div>
   <div class="candle">
     <div class="flame"></div>
   </div>
 </div>
 
 <p>
-  You’re my greatest adventure, my beginning, and my forever.  
+  You’re my greatest adventure, my beginning, and my forever.<br>
   <span style="white-space: nowrap;">I love you so much — G-BOY</span>
 </p>
 
@@ -202,34 +228,37 @@
 
 <script>
   // Balloons
+  const balloonColors = ['#ff99cc', '#cdb4db', '#b5ead7', '#a0e7e5'];
   for (let i = 0; i < 14; i++) {
     let b = document.createElement('div');
     b.classList.add('balloon');
     b.style.left = Math.random() * 100 + 'vw';
-    b.style.background = `hsl(${330 + Math.random() * 20}, 70%, 80%)`;
+    b.style.background = balloonColors[Math.floor(Math.random() * balloonColors.length)];
     b.style.animationDuration = 5 + Math.random() * 6 + 's';
     document.body.appendChild(b);
   }
 
   // Confetti
-  for (let i = 0; i < 40; i++) {
+  for (let i = 0; i < 50; i++) {
     let c = document.createElement('div');
     c.classList.add('confetti');
     c.style.left = Math.random() * 100 + 'vw';
     c.style.background = ['#fff','#ff80bf','#ffccf2','#ff4da6','#ffb6c1'][Math.floor(Math.random()*5)];
-    c.style.animationDuration = 2 + Math.random() * 4 + 's';
+    c.style.animationDuration = 3 + Math.random() * 3 + 's';
     c.style.animationDelay = Math.random() * 2 + 's';
     document.body.appendChild(c);
   }
 
-  // Stars
-  for (let i = 0; i < 50; i++) {
-    let s = document.createElement('div');
-    s.classList.add('star');
-    s.style.left = Math.random() * 100 + 'vw';
-    s.style.top = Math.random() * 100 + 'vh';
-    s.style.animationDelay = Math.random() * 2 + 's';
-    document.body.appendChild(s);
+  // Floating music notes
+  const notes = ['🎵','🎶','♪','♬'];
+  for (let i = 0; i < 20; i++) {
+    let n = document.createElement('div');
+    n.classList.add('note');
+    n.innerText = notes[Math.floor(Math.random() * notes.length)];
+    n.style.left = Math.random() * 100 + 'vw';
+    n.style.fontSize = (12 + Math.random() * 12) + 'px';
+    n.style.animationDuration = (5 + Math.random() * 5) + 's';
+    document.body.appendChild(n);
   }
 </script>
 
