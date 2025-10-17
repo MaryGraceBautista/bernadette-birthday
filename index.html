@@ -146,11 +146,9 @@ button:hover {
 
 /* Balloon sway and rise */
 @keyframes sway {
-  0% { transform: translateY(0) translateX(0); }
-  25% { transform: translateY(-5px) translateX(5px); }
-  50% { transform: translateY(-10px) translateX(0); }
-  75% { transform: translateY(-5px) translateX(-5px); }
-  100% { transform: translateY(0) translateX(0); }
+  0% { transform: translateX(0); }
+  50% { transform: translateX(15px); }
+  100% { transform: translateX(0); }
 }
 
 @keyframes rise {
@@ -163,8 +161,7 @@ button:hover {
   width: 55px;
   height: 70px;
   border-radius: 50%;
-  animation: rise 10s linear infinite, sway 4s ease-in-out infinite;
-  box-shadow: 0 0 15px rgba(255, 182, 193, 0.8);
+  will-change: transform;
 }
 
 /* Confetti */
@@ -250,9 +247,9 @@ footer {
   for (let i = 0; i < 14; i++) {
     let b = document.createElement('div');
     b.classList.add('balloon');
-    b.style.left = Math.random() * 100 + 'vw';
+    b.style.left = Math.random() * 90 + 'vw';
     b.style.background = balloonColors[Math.floor(Math.random() * balloonColors.length)];
-    b.style.animationDuration = 5 + Math.random() * 6 + 's';
+    b.style.animation = `rise ${5 + Math.random()*5}s linear infinite, sway ${2 + Math.random()*2}s ease-in-out infinite`;
     document.body.appendChild(b);
   }
 
