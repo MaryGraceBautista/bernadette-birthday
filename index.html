@@ -6,54 +6,74 @@
 <title>Happy Birthday My Baby!</title>
 <style>
   body {
-    background: linear-gradient(135deg, #ffe1f0, #ffd6f3, #fff5fa);
-    font-family: 'Poppins', 'Comic Sans MS', cursive, sans-serif;
-    text-align: center;
-    color: #c2185b;
-    overflow-x: hidden;
     margin: 0;
-    padding: 0 10px;
+    padding: 0;
+    font-family: 'Poppins', 'Comic Sans MS', cursive, sans-serif;
+    background: radial-gradient(circle at top left, #fff0f8, #ffe1f0, #ffd6f3);
+    color: #c2185b;
+    text-align: center;
+    overflow: hidden;
   }
 
   h1 {
-    font-size: 2.4em;
-    margin-top: 25px;
-    animation: float 2s ease-in-out infinite alternate;
+    font-size: 2.6em;
+    margin-top: 90px;
+    animation: glow 2s ease-in-out infinite alternate;
   }
 
-  @keyframes float {
-    from { transform: translateY(0px); }
-    to { transform: translateY(-8px); }
+  @keyframes glow {
+    from { text-shadow: 0 0 10px #ff99cc, 0 0 20px #ff66b2; }
+    to { text-shadow: 0 0 25px #ff33aa, 0 0 35px #ff66cc; }
+  }
+
+  .banner {
+    position: absolute;
+    top: 25px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-2deg);
+    background: #ff66b2;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 25px;
+    font-size: 1.2em;
+    font-weight: bold;
+    animation: wave 3s ease-in-out infinite alternate;
+    box-shadow: 0 4px 12px rgba(255, 102, 178, 0.4);
+  }
+
+  @keyframes wave {
+    from { transform: translateX(-50%) rotate(-2deg); }
+    to { transform: translateX(-50%) rotate(3deg); }
   }
 
   .cake {
-    width: 130px;
+    width: 140px;
     height: 120px;
-    background: #ffb6c1;
-    margin: 25px auto;
+    background: linear-gradient(to top, #ff99cc, #ffcce6);
+    margin: 70px auto 30px;
     border-radius: 10px;
     position: relative;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 25px rgba(255, 102, 178, 0.4);
   }
 
   .candle {
     width: 10px;
-    height: 40px;
+    height: 45px;
     background: #fff;
     position: absolute;
-    top: -40px;
-    left: 60px;
+    top: -45px;
+    left: 65px;
     border-radius: 5px;
   }
 
   .flame {
-    width: 12px;
-    height: 12px;
+    width: 14px;
+    height: 14px;
     background: radial-gradient(circle, gold, orange, red);
     border-radius: 50%;
     position: absolute;
-    top: -12px;
-    left: -1px;
+    top: -15px;
+    left: -2px;
     animation: flicker 0.2s infinite alternate;
   }
 
@@ -64,8 +84,56 @@
 
   p {
     font-size: 1.2em;
+    margin: 20px auto;
     line-height: 1.6em;
-    margin: 10px 0 20px 0;
+    max-width: 400px;
+  }
+
+  footer {
+    margin-top: 40px;
+    font-size: 1em;
+    color: #a6005c;
+  }
+
+  #overlay {
+    position: fixed;
+    top:0; left:0; width:100%; height:100%;
+    background: rgba(255,240,250,0.97);
+    display:flex; flex-direction:column; justify-content:center; align-items:center;
+    z-index:10;
+  }
+
+  #overlay h2 {
+    font-size:1.6em;
+    color:#c2185b;
+    margin-bottom:20px;
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  #startBtn {
+    background:#ff66b2;
+    color:white;
+    border:none;
+    padding:12px 22px;
+    border-radius:15px;
+    font-size:1.1em;
+    cursor:pointer;
+    box-shadow: 0 4px 10px rgba(255, 51, 153, 0.4);
+  }
+
+  #startBtn:hover { background:#ff3385; }
+
+  .confetti {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #ff80bf;
+    animation: confettiFall 5s linear infinite;
+  }
+
+  @keyframes confettiFall {
+    0% { transform: translateY(-10px) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
   }
 
   .heart {
@@ -95,42 +163,11 @@
     to { transform: translateY(-10vh) rotate(45deg); opacity: 0; }
   }
 
-  footer {
-    margin-top: 40px;
-    font-size: 1em;
-    color: #a6005c;
-  }
-
   @media (max-width: 600px) {
     h1 { font-size: 2em; }
     p { font-size: 1em; }
+    .cake { margin-top: 50px; }
   }
-
-  #overlay {
-    position: fixed;
-    top:0; left:0; width:100%; height:100%;
-    background: rgba(255,240,250,0.95);
-    display:flex; flex-direction:column; justify-content:center; align-items:center;
-    z-index:10;
-  }
-
-  #overlay h2 {
-    font-size:1.6em;
-    color:#c2185b;
-    margin-bottom:20px;
-  }
-
-  #startBtn {
-    background:#ff66b2;
-    color:white;
-    border:none;
-    padding:12px 22px;
-    border-radius:15px;
-    font-size:1.1em;
-    cursor:pointer;
-  }
-
-  #startBtn:hover { background:#ff3385; }
 </style>
 </head>
 <body>
@@ -140,7 +177,9 @@
   <button id="startBtn">Start 💗</button>
 </div>
 
-<h1>🎂 Happy Birthday My Baby, Bernadette! 💖</h1>
+<div class="banner">🎈 Happy Birthday My Baby, Bernadette! 🎈</div>
+
+<h1>💖 Hope You Enjoy This Day! 💖</h1>
 
 <div class="cake">
   <div class="candle">
@@ -149,15 +188,13 @@
 </div>
 
 <p>
-  Hope you enjoy this day, my love! 💕<br>
-  You deserve all the sweetness in the world — and I’m so lucky to have you. 💫<br>
-  I love you so much! 💌
+  You’re my greatest adventure, my beginning, and my forever. I love you so much. — G-BOY
 </p>
 
 <footer>Made with 💖 just for you — from G-boy 😎</footer>
 
-<audio id="bgmusic" loop preload="auto">
-  <source src="https://files.freemusicarchive.org/storage-freemusicarchive-org/tracks/tjzD9KT1fT04GmIGzVtkk0qd72ihvvN6xB8nEThm.mp3" type="audio/mpeg">
+<audio id="bgmusic" preload="auto" loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/10/10/audio_6555dc040d.mp3?filename=happy-birthday-to-you-piano-version-12215.mp3" type="audio/mpeg">
 </audio>
 
 <script>
@@ -165,30 +202,46 @@ const overlay = document.getElementById('overlay');
 const startBtn = document.getElementById('startBtn');
 const music = document.getElementById('bgmusic');
 
+// Start sequence
 startBtn.addEventListener('click', () => {
   overlay.style.display = 'none';
   music.volume = 0;
-  music.play().then(() => {
-    let vol = 0;
-    const fade = setInterval(() => {
-      if (vol < 1) {
-        vol += 0.02;
-        music.volume = vol;
-      } else {
-        clearInterval(fade);
-      }
-    }, 100);
-  }).catch(err => console.log(err));
+  music.load();
+  setTimeout(() => {
+    music.play().then(() => {
+      // Fade in volume smoothly
+      let vol = 0;
+      const fade = setInterval(() => {
+        if (vol < 1) {
+          vol += 0.02;
+          music.volume = vol;
+        } else {
+          clearInterval(fade);
+        }
+      }, 100);
+    }).catch(err => console.log('Playback prevented:', err));
+  }, 400);
 });
 
-// floating hearts
-for (let i = 0; i < 25; i++) {
+// Hearts
+for (let i = 0; i < 20; i++) {
   let h = document.createElement('div');
   h.classList.add('heart');
   h.style.left = Math.random() * 100 + 'vw';
   h.style.animationDuration = 4 + Math.random() * 4 + 's';
   h.style.background = ['#ff99cc','#ffb6c1','#ffcce0'][Math.floor(Math.random()*3)];
   document.body.appendChild(h);
+}
+
+// Confetti
+for (let i = 0; i < 40; i++) {
+  let c = document.createElement('div');
+  c.classList.add('confetti');
+  c.style.left = Math.random() * 100 + 'vw';
+  c.style.background = ['#ff66b2','#ffd6e7','#fff','#ffb6c1','#ff99cc'][Math.floor(Math.random()*5)];
+  c.style.animationDuration = 3 + Math.random() * 4 + 's';
+  c.style.animationDelay = Math.random() * 2 + 's';
+  document.body.appendChild(c);
 }
 </script>
 
