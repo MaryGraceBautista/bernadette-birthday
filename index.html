@@ -15,7 +15,8 @@ body {
   text-align: center;
   background: linear-gradient(135deg, #ffc1e3, #d7b2ff, #ffd1b3);
   color: #fff;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 h1 {
@@ -44,7 +45,7 @@ h1 {
 .cake::before {
   content: '';
   position: absolute;
-  width: 140px; /* slightly wider for better centering */
+  width: 140px;
   height: 20px;
   background: repeating-linear-gradient(
     45deg,
@@ -55,18 +56,19 @@ h1 {
   );
   bottom: -20px;
   left: 50%;
-  transform: translateX(-50%); /* ensures it’s perfectly centered */
+  transform: translateX(-50%);
   border-radius: 0 0 12px 12px;
   box-shadow: 0 5px 10px rgba(0,0,0,0.2);
 }
-  
+
 /* Strawberry frosting drip with shimmer */
 .frosting {
   position: absolute;
   width: 100%;
   height: 25px;
   top: -25px;
-  background: #ffb6c1;
+  background: linear-gradient(120deg, #ffb6c1, #ffe6f0, #ffb6c1);
+  background-size: 200% 200%;
   border-radius: 50%;
   animation: drip 3s infinite ease-in-out, shimmer 2s linear infinite;
   z-index: 1;
@@ -81,11 +83,6 @@ h1 {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
-}
-
-.frosting {
-  background: linear-gradient(120deg, #ffb6c1, #ffe6f0, #ffb6c1);
-  background-size: 200% 200%;
 }
 
 /* Candle with glow halo */
@@ -147,7 +144,7 @@ button:hover {
   box-shadow: 0 8px 25px rgba(255, 77, 166, 0.6);
 }
 
-/* Balloon sway animation */
+/* Balloon sway and rise */
 @keyframes sway {
   0% { transform: translateY(0) translateX(0); }
   25% { transform: translateY(-5px) translateX(5px); }
@@ -156,7 +153,11 @@ button:hover {
   100% { transform: translateY(0) translateX(0); }
 }
 
-/* Balloons */
+@keyframes rise {
+  0% { transform: translateY(100vh); }
+  100% { transform: translateY(-200px); }
+}
+
 .balloon {
   position: absolute;
   width: 55px;
@@ -164,11 +165,6 @@ button:hover {
   border-radius: 50%;
   animation: rise 10s linear infinite, sway 4s ease-in-out infinite;
   box-shadow: 0 0 15px rgba(255, 182, 193, 0.8);
-}
-
-@keyframes rise {
-  from { transform: translateY(100vh); }
-  to { transform: translateY(-150px); }
 }
 
 /* Confetti */
