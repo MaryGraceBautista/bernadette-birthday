@@ -1,150 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>🎉 Happy Birthday My Baby, Bernadette! 🎉</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday, Bernadette!</title>
 <style>
   body {
     margin: 0;
     padding: 0;
-    font-family: 'Poppins', 'Comic Sans MS', cursive, sans-serif;
-    background: radial-gradient(circle at top left, #fff8e7, #ffd1e8, #ffc0cb);
     text-align: center;
-    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb);
+    color: #fff;
+    overflow-x: hidden;
     min-height: 100vh;
-    position: relative;
-    color: #d63384;
   }
 
   h1 {
-    font-size: clamp(2em, 6vw, 3em);
-    margin-top: 40px;
-    animation: glow 2s ease-in-out infinite alternate;
+    font-size: 2.5em;
+    margin-top: 60px;
+    text-shadow: 0 0 15px rgba(255,255,255,0.8);
+    animation: glow 2s infinite alternate;
   }
 
   @keyframes glow {
-    from { text-shadow: 0 0 10px #ff80bf, 0 0 20px #ff66b2; }
-    to { text-shadow: 0 0 30px #ff33aa, 0 0 40px #ff99cc; }
-  }
-
-  .subtitle {
-    font-size: clamp(1.1em, 3.5vw, 1.5em);
-    margin-bottom: 15px;
-    color: #a6005c;
-    font-weight: bold;
+    from { text-shadow: 0 0 15px #ffb6c1; }
+    to { text-shadow: 0 0 30px #ff69b4, 0 0 50px #ff1493; }
   }
 
   .cake {
-    width: clamp(120px, 30vw, 180px);
-    height: clamp(100px, 25vw, 150px);
-    background: linear-gradient(to top, #ff99cc, #ffe6f2);
-    margin: 100px auto 20px;
+    width: 130px;
+    height: 120px;
+    background: pink;
+    margin: 60px auto 20px;
     border-radius: 10px;
     position: relative;
-    box-shadow: 0 10px 25px rgba(255, 102, 178, 0.5);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
   }
 
   .candle {
-    width: 12px;
+    width: 10px;
     height: 45px;
     background: #fff;
     position: absolute;
     top: -45px;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 60px;
     border-radius: 5px;
   }
 
   .flame {
-    width: 16px;
-    height: 16px;
+    width: 12px;
+    height: 12px;
     background: radial-gradient(circle, gold, orange, red);
     border-radius: 50%;
     position: absolute;
-    top: -18px;
-    left: -2px;
+    top: -12px;
+    left: -1px;
     animation: flicker 0.25s infinite alternate;
   }
 
   @keyframes flicker {
     from { transform: scale(1); opacity: 1; }
-    to { transform: scale(1.2); opacity: 0.8; }
+    to { transform: scale(1.3); opacity: 0.8; }
   }
 
   p {
-    font-size: clamp(1em, 3.5vw, 1.3em);
-    margin: 25px auto;
-    max-width: 90%;
-    line-height: 1.6;
-  }
-
-  span.nowrap {
-    white-space: nowrap;
+    font-size: 1.2em;
+    margin: 0 20px 30px;
+    color: #fff;
   }
 
   button {
-    background: linear-gradient(45deg, #ff66b2, #ffcc33);
+    background: #ff4081;
     color: white;
     border: none;
-    padding: 12px 20px;
-    border-radius: 15px;
+    padding: 12px 22px;
+    border-radius: 25px;
     cursor: pointer;
-    font-size: clamp(1em, 4vw, 1.2em);
-    box-shadow: 0 4px 12px rgba(255, 51, 153, 0.4);
-    margin-top: 15px;
-    transition: 0.3s;
+    font-size: 1em;
+    box-shadow: 0 4px 15px rgba(255, 64, 129, 0.5);
+    transition: all 0.3s;
   }
 
   button:hover {
+    background: #ff1e63;
     transform: scale(1.05);
-    background: linear-gradient(45deg, #ff3385, #ffb84d);
   }
 
-  footer {
-    margin-top: 40px;
-    font-size: clamp(0.8em, 3vw, 1em);
-    color: #a6005c;
-  }
-
-  /* Balloons */
-  .balloon {
+  .confetti, .balloon {
     position: absolute;
-    width: 50px;
-    height: 60px;
-    border-radius: 50%;
-    animation: rise 8s linear infinite;
-    opacity: 0.8;
+    pointer-events: none;
   }
 
-  @keyframes rise {
-    0% { transform: translateY(100vh) rotate(0deg); }
-    100% { transform: translateY(-200px) rotate(360deg); }
-  }
-
-  /* Confetti */
   .confetti {
-    position: absolute;
     width: 8px;
     height: 8px;
-    background: #ff80bf;
-    animation: fall 5s linear infinite;
+    background: #fff;
+    animation: fall 4s linear infinite;
   }
 
   @keyframes fall {
-    0% { transform: translateY(0) rotate(0); opacity: 1; }
-    100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(100vh); opacity: 0; }
+  }
+
+  .balloon {
+    width: 45px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(255, 182, 193, 0.8);
+    animation: rise 9s linear infinite;
+  }
+
+  @keyframes rise {
+    from { transform: translateY(100vh); }
+    to { transform: translateY(-150px); }
+  }
+
+  .signature {
+    margin-top: 40px;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #fff;
+  }
+
+  footer {
+    margin-top: 25px;
+    font-size: 0.9em;
+    color: #ffe6f2;
   }
 
   @media (max-width: 600px) {
-    .cake { margin: 110px auto 20px; }
+    h1 { font-size: 1.8em; margin-top: 40px; }
+    .cake { width: 100px; height: 100px; margin-top: 50px; }
+    p { font-size: 1em; }
+    button { font-size: 0.9em; padding: 10px 18px; }
   }
 </style>
 </head>
 <body>
 
-<h1>🎉 Happy Birthday My Baby, Bernadette! 🎉</h1>
-<div class="subtitle">Hope you enjoy this day!</div>
+<h1>🎉 Happy Birthday, my baby Bernadette! 🎂</h1>
 
 <div class="cake">
   <div class="candle">
@@ -154,47 +150,37 @@
 
 <p>
   You’re my greatest adventure, my beginning, and my forever.  
-  <span class="nowrap">I love you so much. — G-BOY</span>
+  <span style="white-space: nowrap;">I love you so much — G-BOY</span>
 </p>
 
-<button onclick="window.open('https://open.spotify.com/track/59BqZHpLJ0wLzUQd6WwzYq','_blank')">
-  🎶 Play “Celebration” on Spotify 🎶
+<button onclick="window.open('https://www.youtube.com/watch?v=cIg6odS-fA0&list=RDcIg6odS-fA0&start_radio=1','_blank')">
+  🎵 Play Celebration 🎵
 </button>
 
-<footer>Made with 💖 and confetti — from G-BOY</footer>
-
-<audio id="bgmusic" preload="auto" loop>
-  <source src="https://cdn.pixabay.com/download/audio/2022/03/23/audio_7c7f7f0b6e.mp3?filename=happy-birthday-357371.mp3" type="audio/mpeg">
-</audio>
+<div class="signature">Made with ❤️ just for you.</div>
+<footer>✨ Let’s celebrate love and life! ✨</footer>
 
 <script>
-const music = document.getElementById('bgmusic');
-document.addEventListener('DOMContentLoaded', () => {
-  music.play().catch(() => {
-    document.body.addEventListener('click', () => music.play(), { once: true });
-  });
-});
+  // Balloons
+  for (let i = 0; i < 12; i++) {
+    let b = document.createElement('div');
+    b.classList.add('balloon');
+    b.style.left = Math.random() * 100 + 'vw';
+    b.style.background = `hsl(${Math.random() * 360}, 70%, 70%)`;
+    b.style.animationDuration = 5 + Math.random() * 5 + 's';
+    document.body.appendChild(b);
+  }
 
-// 🎈 Balloons
-for (let i = 0; i < 15; i++) {
-  let b = document.createElement('div');
-  b.classList.add('balloon');
-  b.style.left = Math.random() * 100 + 'vw';
-  b.style.background = ['#ff3366', '#ffcc00', '#66ccff', '#33cc99', '#ff66b2'][Math.floor(Math.random()*5)];
-  b.style.animationDuration = 5 + Math.random() * 5 + 's';
-  document.body.appendChild(b);
-}
-
-// 🎊 Confetti
-for (let i = 0; i < 40; i++) {
-  let c = document.createElement('div');
-  c.classList.add('confetti');
-  c.style.left = Math.random() * 100 + 'vw';
-  c.style.background = ['#ff66b2','#ffd6e7','#fff','#ffb6c1','#ffcc33'][Math.floor(Math.random()*5)];
-  c.style.animationDuration = 3 + Math.random() * 3 + 's';
-  c.style.animationDelay = Math.random() * 2 + 's';
-  document.body.appendChild(c);
-}
+  // Confetti
+  for (let i = 0; i < 40; i++) {
+    let c = document.createElement('div');
+    c.classList.add('confetti');
+    c.style.left = Math.random() * 100 + 'vw';
+    c.style.background = ['#fff','#ff80bf','#ffcc00','#33ccff','#ff4da6'][Math.floor(Math.random()*5)];
+    c.style.animationDuration = 2 + Math.random() * 4 + 's';
+    c.style.animationDelay = Math.random() * 2 + 's';
+    document.body.appendChild(c);
+  }
 </script>
 
 </body>
