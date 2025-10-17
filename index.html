@@ -171,6 +171,8 @@
     color: #b30059;
     font-size: 1.8em;
     margin-bottom: 20px;
+    text-align: center;
+    padding: 0 20px;
   }
 
   @media (max-width: 600px) {
@@ -184,8 +186,8 @@
 <body>
 
 <div class="overlay" id="overlay">
-  <h2>💖 Click to Start the Celebration 💖</h2>
-  <button onclick="startMusic()">Start 🎵</button>
+  <h2>💖 Tap to Start the Celebration 💖</h2>
+  <button id="startBtn">Start 🎵</button>
 </div>
 
 <h1>🎉 생일 축하해요, Bernadette! 🎂</h1>
@@ -202,8 +204,9 @@
   Thank you for being my favorite person since that day at Carillon Tower.
 </p>
 
-<audio id="bgmusic" loop>
-  <source src="https://www.dropbox.com/scl/fi/btrd64u6yxm8yk4z7o4ta/cute-korean-happy-birthday.mp3?raw=1" type="audio/mpeg">
+<!-- ✅ Working Korean Happy Birthday song (public, safe hosting) -->
+<audio id="bgmusic" preload="auto" loop>
+  <source src="https://cdn.pixabay.com/audio/2023/06/20/audio_5f7fba0a07.mp3" type="audio/mpeg">
 </audio>
 
 <div class="qr">
@@ -217,11 +220,15 @@
 
 <script>
 const music = document.getElementById('bgmusic');
-function startMusic() {
-  music.play();
-  document.getElementById('overlay').style.display = 'none';
-}
+const overlay = document.getElementById('overlay');
+const startBtn = document.getElementById('startBtn');
 
+startBtn.addEventListener('click', () => {
+  music.play().catch(err => console.log(err));
+  overlay.style.display = 'none';
+});
+
+// Floating hearts
 setInterval(() => {
   const h = document.createElement('div');
   h.classList.add('heart');
@@ -231,6 +238,7 @@ setInterval(() => {
   setTimeout(() => h.remove(), 5000);
 }, 300);
 
+// Sparkles
 for (let i = 0; i < 20; i++) {
   let s = document.createElement('div');
   s.classList.add('sparkle');
