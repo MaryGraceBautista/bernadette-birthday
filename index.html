@@ -45,6 +45,11 @@ button:hover { transform:scale(1.05); box-shadow:0 8px 25px rgba(255,77,166,0.6)
   background: linear-gradient(to top, #ff66b2 0%, #ff99cc 100%);
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(255,105,180,0.4);
+  animation: cakeRise 1.5s ease-out forwards;
+}
+@keyframes cakeRise {
+  0% { transform: translateY(40px); opacity:0; }
+  100% { transform: translateY(0); opacity:1; }
 }
 .cake::before {
   content:'';
@@ -70,7 +75,7 @@ button:hover { transform:scale(1.05); box-shadow:0 8px 25px rgba(255,77,166,0.6)
 /* --- Balloons --- */
 .balloon {
   position: absolute;
-  bottom: 0; /* start at bottom of viewport */
+  bottom: -100px; /* start below viewport */
   border-radius: 50%;
   opacity: 0.9;
   box-shadow:0 4px 10px rgba(0,0,0,0.2);
@@ -123,15 +128,14 @@ for(let i=0;i<15;i++){
   let b=document.createElement('div');
   b.className='balloon';
   b.style.left=Math.random()*85+'vw';
-  const w = Math.max(30, Math.min(70, window.innerWidth*0.1 + Math.random()*20));
-  const h = Math.max(50, Math.min(100, window.innerHeight*0.12 + Math.random()*30));
-  b.style.width=w+'px';
-  b.style.height=h+'px';
+  const size = 30 + Math.random()*50;
+  b.style.width=size+'px';
+  b.style.height=size*1.2+'px';
   b.style.background=balloonColors[Math.floor(Math.random()*balloonColors.length)];
-  const riseTime = 8+Math.random()*5;
-  const swayTime = 3+Math.random()*2;
-  b.style.animation=`rise ${riseTime}s linear infinite, sway ${swayTime}s ease-in-out infinite`;
-  b.style.animationDelay=Math.random()*5+'s';
+  const riseTime = 8 + Math.random()*5;
+  const swayTime = 3 + Math.random()*2;
+  b.style.animation = `rise ${riseTime}s linear infinite, sway ${swayTime}s ease-in-out infinite`;
+  b.style.animationDelay = `${Math.random()*5}s`;
   document.body.appendChild(b);
 }
 
