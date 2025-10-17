@@ -71,31 +71,20 @@ button {
 button:hover { transform:scale(1.05); box-shadow:0 8px 25px rgba(255,77,166,0.6); }
 
 /* Balloons */
-@keyframes rise {
-  0% { transform: translateY(100vh); }
-  100% { transform: translateY(-25vh); }
-}
-@keyframes sway {
-  0% { transform: translateX(0); }
-  50% { transform: translateX(20px); }
-  100% { transform: translateX(0); }
-}
+@keyframes rise { 0%{transform:translateY(100vh);} 100%{transform:translateY(-25vh);} }
+@keyframes sway { 0%{transform:translateX(0);} 50%{transform:translateX(15px);} 100%{transform:translateX(0);} }
 .balloon {
   position: absolute;
-  width: 60px;
-  height: 80px;
+  width: 60px; height: 80px;
   border-radius: 50%;
   opacity: 0.9;
   will-change: transform;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  border: 2px solid #fff;
 }
 
 /* Confetti */
-.confetti {
-  position: absolute;
-  width: 8px; height: 8px; border-radius: 2px;
-  opacity:0;
-}
+.confetti { position:absolute; width:8px;height:8px;border-radius:2px; opacity:0; }
 @keyframes confettiBurst {
   0% { transform: translate(0,0) scale(1); opacity:1; }
   100% { transform: translate(var(--x), var(--y)) rotate(720deg) scale(0.6); opacity:0; }
@@ -118,20 +107,22 @@ button:hover { transform:scale(1.05); box-shadow:0 8px 25px rgba(255,77,166,0.6)
 const balloonColors = ['#ff99cc','#cdb4db','#b5ead7','#a0e7e5','#ffd6a5'];
 for(let i=0;i<15;i++){
   let b = document.createElement('div');
-  b.className = 'balloon';
-  b.style.left = Math.random()*90+'vw';
+  b.className='balloon';
+  b.style.left = Math.random()*85 + 'vw';
   b.style.background = balloonColors[Math.floor(Math.random()*balloonColors.length)];
+  b.style.width = (50+Math.random()*30) + 'px';
+  b.style.height = (60+Math.random()*40) + 'px';
   const riseTime = 6+Math.random()*5;
-  const swayTime = 2+Math.random()*2;
+  const swayTime = 2+Math.random()*3;
   b.style.animation = `rise ${riseTime}s linear infinite, sway ${swayTime}s ease-in-out infinite`;
   b.style.animationDelay = Math.random()*5+'s';
   document.body.appendChild(b);
 }
 
 // 🎊 Confetti bursts
-function createConfetti() {
+function createConfetti(){
   for(let i=0;i<60;i++){
-    let c = document.createElement('div');
+    let c=document.createElement('div');
     c.className='confetti';
     const colors = ['#fff','#ff80bf','#ffccf2','#ff4da6','#ffb6c1'];
     c.style.background = colors[Math.floor(Math.random()*colors.length)];
