@@ -157,8 +157,7 @@
 <footer>Made with 💖 just for you — from G-boy 😎</footer>
 
 <audio id="bgmusic" loop preload="auto">
-  <!-- Replace this link with your own hosted mp3 if desired -->
-  <source src="https://cdn.jsdelivr.net/gh/Bedimcode/portfolio-website@master/assets/audio/happy-birthday.mp3" type="audio/mpeg">
+  <source src="https://files.freemusicarchive.org/storage-freemusicarchive-org/tracks/tjzD9KT1fT04GmIGzVtkk0qd72ihvvN6xB8nEThm.mp3" type="audio/mpeg">
 </audio>
 
 <script>
@@ -179,11 +178,11 @@ startBtn.addEventListener('click', () => {
         clearInterval(fade);
       }
     }, 100);
-  }).catch(() => {});
+  }).catch(err => console.log(err));
 });
 
 // floating hearts
-for (let i = 0; i < 20; i++) {
+for (let i = 0; i < 25; i++) {
   let h = document.createElement('div');
   h.classList.add('heart');
   h.style.left = Math.random() * 100 + 'vw';
