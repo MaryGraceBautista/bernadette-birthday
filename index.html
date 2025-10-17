@@ -3,61 +3,50 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Happy Birthday My Baby!</title>
+<title>🎉 Happy Birthday My Baby, Bernadette! 🎉</title>
 <style>
   body {
     margin: 0;
     padding: 0;
-    font-family: "Poppins", "Comic Sans MS", cursive, sans-serif;
-    background: radial-gradient(circle at top left, #fff0f8, #ffe1f0, #ffd6f3);
-    color: #c2185b;
+    font-family: 'Poppins', 'Comic Sans MS', cursive, sans-serif;
+    background: radial-gradient(circle at top left, #fff8e7, #ffd1e8, #ffc0cb);
     text-align: center;
     overflow: hidden;
     min-height: 100vh;
     position: relative;
-  }
-
-  .banner {
-    display: inline-block;
-    margin-top: 25px;
-    background: #ff66b2;
-    color: white;
-    padding: 10px 25px;
-    border-radius: 25px;
-    font-size: clamp(1em, 4vw, 1.4em);
-    font-weight: bold;
-    animation: wave 3s ease-in-out infinite alternate;
-    box-shadow: 0 4px 12px rgba(255, 102, 178, 0.4);
-  }
-
-  @keyframes wave {
-    from { transform: rotate(-2deg); }
-    to { transform: rotate(3deg); }
+    color: #d63384;
   }
 
   h1 {
-    font-size: clamp(1.6em, 6vw, 2.8em);
-    margin: 40px 10px 10px;
+    font-size: clamp(2em, 6vw, 3em);
+    margin-top: 40px;
     animation: glow 2s ease-in-out infinite alternate;
   }
 
   @keyframes glow {
-    from { text-shadow: 0 0 10px #ff99cc, 0 0 20px #ff66b2; }
-    to { text-shadow: 0 0 25px #ff33aa, 0 0 35px #ff66cc; }
+    from { text-shadow: 0 0 10px #ff80bf, 0 0 20px #ff66b2; }
+    to { text-shadow: 0 0 30px #ff33aa, 0 0 40px #ff99cc; }
+  }
+
+  .subtitle {
+    font-size: clamp(1.1em, 3.5vw, 1.5em);
+    margin-bottom: 15px;
+    color: #a6005c;
+    font-weight: bold;
   }
 
   .cake {
-    width: clamp(100px, 30vw, 160px);
-    height: clamp(90px, 18vw, 130px);
-    background: linear-gradient(to top, #ff99cc, #ffcce6);
-    margin: 80px auto 20px; /* 🎂 Lowered */
+    width: clamp(120px, 30vw, 180px);
+    height: clamp(100px, 25vw, 150px);
+    background: linear-gradient(to top, #ff99cc, #ffe6f2);
+    margin: 100px auto 20px;
     border-radius: 10px;
     position: relative;
-    box-shadow: 0 10px 25px rgba(255, 102, 178, 0.4);
+    box-shadow: 0 10px 25px rgba(255, 102, 178, 0.5);
   }
 
   .candle {
-    width: 10px;
+    width: 12px;
     height: 45px;
     background: #fff;
     position: absolute;
@@ -68,83 +57,94 @@
   }
 
   .flame {
-    width: 14px;
-    height: 14px;
+    width: 16px;
+    height: 16px;
     background: radial-gradient(circle, gold, orange, red);
     border-radius: 50%;
     position: absolute;
-    top: -15px;
+    top: -18px;
     left: -2px;
-    animation: flicker 0.2s infinite alternate;
+    animation: flicker 0.25s infinite alternate;
   }
 
   @keyframes flicker {
     from { transform: scale(1); opacity: 1; }
-    to { transform: scale(1.3); opacity: 0.7; }
+    to { transform: scale(1.2); opacity: 0.8; }
   }
 
   p {
     font-size: clamp(1em, 3.5vw, 1.3em);
-    margin: 30px auto;
-    line-height: 1.6em;
+    margin: 25px auto;
     max-width: 90%;
+    line-height: 1.6;
+  }
+
+  span.nowrap {
+    white-space: nowrap;
+  }
+
+  button {
+    background: linear-gradient(45deg, #ff66b2, #ffcc33);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: clamp(1em, 4vw, 1.2em);
+    box-shadow: 0 4px 12px rgba(255, 51, 153, 0.4);
+    margin-top: 15px;
+    transition: 0.3s;
+  }
+
+  button:hover {
+    transform: scale(1.05);
+    background: linear-gradient(45deg, #ff3385, #ffb84d);
   }
 
   footer {
-    margin-top: 30px;
+    margin-top: 40px;
     font-size: clamp(0.8em, 3vw, 1em);
     color: #a6005c;
   }
 
+  /* Balloons */
+  .balloon {
+    position: absolute;
+    width: 50px;
+    height: 60px;
+    border-radius: 50%;
+    animation: rise 8s linear infinite;
+    opacity: 0.8;
+  }
+
+  @keyframes rise {
+    0% { transform: translateY(100vh) rotate(0deg); }
+    100% { transform: translateY(-200px) rotate(360deg); }
+  }
+
+  /* Confetti */
   .confetti {
     position: absolute;
     width: 8px;
     height: 8px;
     background: #ff80bf;
-    animation: confettiFall 5s linear infinite;
+    animation: fall 5s linear infinite;
   }
 
-  @keyframes confettiFall {
-    0% { transform: translateY(-10px) rotate(0deg); opacity: 1; }
+  @keyframes fall {
+    0% { transform: translateY(0) rotate(0); opacity: 1; }
     100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
   }
 
-  .heart {
-    position: absolute;
-    width: 18px;
-    height: 18px;
-    background: pink;
-    transform: rotate(45deg);
-    animation: rise 6s linear infinite;
-  }
-
-  .heart::before,
-  .heart::after {
-    content: "";
-    width: 18px;
-    height: 18px;
-    background: pink;
-    border-radius: 50%;
-    position: absolute;
-  }
-
-  .heart::before { top: -9px; left: 0; }
-  .heart::after { left: 9px; top: 0; }
-
-  @keyframes rise {
-    from { transform: translateY(100vh) rotate(45deg); opacity: 1; }
-    to { transform: translateY(-10vh) rotate(45deg); opacity: 0; }
-  }
-
   @media (max-width: 600px) {
-    .cake { margin: 100px auto 15px; } /* 📱 More space on small screens */
+    .cake { margin: 110px auto 20px; }
   }
 </style>
 </head>
 <body>
 
-<div class="banner">🎈 Happy Birthday My Baby, Bernadette! 🎈</div>
-<h1>Hope You Enjoy This Day!</h1>
+<h1>🎉 Happy Birthday My Baby, Bernadette! 🎉</h1>
+<div class="subtitle">Hope you enjoy this day!</div>
 
 <div class="cake">
   <div class="candle">
@@ -154,10 +154,14 @@
 
 <p>
   You’re my greatest adventure, my beginning, and my forever.  
-  I love you so much. — G-BOY
+  <span class="nowrap">I love you so much. — G-BOY</span>
 </p>
 
-<footer>Made with 💖 just for you — from G-BOY</footer>
+<button onclick="window.open('https://open.spotify.com/track/59BqZHpLJ0wLzUQd6WwzYq','_blank')">
+  🎶 Play “Celebration” on Spotify 🎶
+</button>
+
+<footer>Made with 💖 and confetti — from G-BOY</footer>
 
 <audio id="bgmusic" preload="auto" loop>
   <source src="https://cdn.pixabay.com/download/audio/2022/03/23/audio_7c7f7f0b6e.mp3?filename=happy-birthday-357371.mp3" type="audio/mpeg">
@@ -165,18 +169,20 @@
 
 <script>
 const music = document.getElementById('bgmusic');
-
-// 🎵 Try autoplay immediately (desktop & Android)
 document.addEventListener('DOMContentLoaded', () => {
   music.play().catch(() => {
-    // 🎧 If autoplay blocked (iPhone), wait for first tap
-    document.body.addEventListener('touchstart', playOnTap, { once: true });
-    document.body.addEventListener('click', playOnTap, { once: true });
+    document.body.addEventListener('click', () => music.play(), { once: true });
   });
 });
 
-function playOnTap() {
-  music.play().catch(err => console.log('Playback blocked:', err));
+// 🎈 Balloons
+for (let i = 0; i < 15; i++) {
+  let b = document.createElement('div');
+  b.classList.add('balloon');
+  b.style.left = Math.random() * 100 + 'vw';
+  b.style.background = ['#ff3366', '#ffcc00', '#66ccff', '#33cc99', '#ff66b2'][Math.floor(Math.random()*5)];
+  b.style.animationDuration = 5 + Math.random() * 5 + 's';
+  document.body.appendChild(b);
 }
 
 // 🎊 Confetti
@@ -184,20 +190,10 @@ for (let i = 0; i < 40; i++) {
   let c = document.createElement('div');
   c.classList.add('confetti');
   c.style.left = Math.random() * 100 + 'vw';
-  c.style.background = ['#ff66b2','#ffd6e7','#fff','#ffb6c1','#ff99cc'][Math.floor(Math.random()*5)];
-  c.style.animationDuration = 3 + Math.random() * 4 + 's';
+  c.style.background = ['#ff66b2','#ffd6e7','#fff','#ffb6c1','#ffcc33'][Math.floor(Math.random()*5)];
+  c.style.animationDuration = 3 + Math.random() * 3 + 's';
   c.style.animationDelay = Math.random() * 2 + 's';
   document.body.appendChild(c);
-}
-
-// 💗 Floating hearts
-for (let i = 0; i < 20; i++) {
-  let h = document.createElement('div');
-  h.classList.add('heart');
-  h.style.left = Math.random() * 100 + 'vw';
-  h.style.animationDuration = 4 + Math.random() * 4 + 's';
-  h.style.background = ['#ff99cc','#ffb6c1','#ffcce0'][Math.floor(Math.random()*3)];
-  document.body.appendChild(h);
 }
 </script>
 
