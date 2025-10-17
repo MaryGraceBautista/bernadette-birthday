@@ -6,20 +6,26 @@
 <title>Happy Birthday Bernadette!</title>
 <style>
   body {
-    background: #ffc1e3;
-    background: linear-gradient(135deg, #ffc1e3, #ffb6c1);
+    background: linear-gradient(135deg, #ffc1e3, #ffb6c1, #ffe4ec);
+    background-size: 400% 400%;
     font-family: 'Comic Sans MS', cursive, sans-serif;
     text-align: center;
     color: #d63384;
-    overflow-x: hidden;
     margin: 0;
-    padding: 0 10px;
+    overflow-x: hidden;
+    animation: gradientMove 6s ease infinite alternate;
+  }
+
+  @keyframes gradientMove {
+    0% { background-position: left top; }
+    100% { background-position: right bottom; }
   }
 
   h1 {
-    font-size: 2.2em;
-    margin-top: 20px;
+    font-size: 2.5em;
+    margin-top: 30px;
     animation: float 2s ease-in-out infinite alternate;
+    text-shadow: 2px 2px 5px #fff;
   }
 
   @keyframes float {
@@ -28,77 +34,58 @@
   }
 
   .cake {
-    width: 120px;
-    height: 120px;
+    width: 130px;
+    height: 130px;
     background: pink;
     margin: 30px auto;
     border-radius: 10px;
     position: relative;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
   }
 
   .candle {
-    width: 10px;
-    height: 40px;
+    width: 12px;
+    height: 45px;
     background: #fff;
     position: absolute;
-    top: -40px;
-    left: 55px;
+    top: -45px;
+    left: 59px;
     border-radius: 5px;
   }
 
   .flame {
-    width: 10px;
-    height: 10px;
+    width: 14px;
+    height: 14px;
     background: radial-gradient(circle, gold, orange, red);
     border-radius: 50%;
     position: absolute;
-    top: -10px;
-    left: 0;
-    animation: flicker 0.2s infinite alternate;
+    top: -14px;
+    left: -2px;
+    animation: flicker 0.25s infinite alternate;
   }
 
   @keyframes flicker {
     from { transform: scale(1); opacity: 1; }
-    to { transform: scale(1.2); opacity: 0.8; }
+    to { transform: scale(1.3); opacity: 0.7; }
   }
 
-  .balloon {
-    position: absolute;
-    width: 40px;
-    height: 50px;
-    border-radius: 50%;
-    background: rgba(255,105,180,0.8);
-    animation: rise 10s linear infinite;
-  }
-
-  @keyframes rise {
-    from { transform: translateY(100vh); }
-    to { transform: translateY(-150px); }
-  }
-
-  .confetti {
-    position: absolute;
-    width: 6px;
-    height: 6px;
-    background: #fff;
-    animation: fall 3s linear infinite;
-  }
-
-  @keyframes fall {
-    0% { transform: translateY(0); opacity: 1; }
-    100% { transform: translateY(100vh); opacity: 0; }
+  p {
+    font-size: 1.1em;
+    margin: 20px;
+    color: #b30059;
+    line-height: 1.6;
   }
 
   button {
     background: #ff66b2;
     color: white;
     border: none;
-    padding: 10px 18px;
-    border-radius: 12px;
+    padding: 12px 20px;
+    border-radius: 15px;
     cursor: pointer;
-    font-size: 1em;
+    font-size: 1.1em;
     margin-top: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
     transition: background 0.3s;
   }
 
@@ -118,7 +105,7 @@
 
   .signature {
     margin-top: 35px;
-    font-size: 1.1em;
+    font-size: 1.2em;
     color: #b30059;
     font-weight: bold;
   }
@@ -129,18 +116,58 @@
     color: #a6005c;
   }
 
-  /* 📱 Responsive for iPhone */
+  /* Floating Hearts */
+  .heart {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    background: pink;
+    transform: rotate(45deg);
+    animation: fly 5s linear infinite;
+  }
+  .heart::before, .heart::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: pink;
+    border-radius: 50%;
+  }
+  .heart::before { top: -10px; left: 0; }
+  .heart::after { left: -10px; top: 0; }
+
+  @keyframes fly {
+    0% { transform: translateY(100vh) rotate(45deg); opacity: 1; }
+    100% { transform: translateY(-100px) rotate(45deg); opacity: 0; }
+  }
+
+  /* Sparkles */
+  .sparkle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: gold;
+    border-radius: 50%;
+    animation: sparkle 2s ease-in-out infinite;
+  }
+
+  @keyframes sparkle {
+    0%, 100% { opacity: 0; transform: scale(0.5); }
+    50% { opacity: 1; transform: scale(1.2); }
+  }
+
+  /* Responsive */
   @media (max-width: 600px) {
-    h1 { font-size: 1.8em; }
-    .cake { width: 90px; height: 90px; }
-    .candle { left: 40px; }
-    button { font-size: 0.9em; padding: 8px 14px; }
+    h1 { font-size: 1.9em; }
+    .cake { width: 100px; height: 100px; }
+    .candle { left: 45px; }
+    button { font-size: 1em; padding: 10px 16px; }
   }
 </style>
 </head>
 <body>
 
-<h1>🎉 Happy Birthday, Bernadette! 🎂</h1>
+<h1>🎉 생일 축하해요, Bernadette! 🎂</h1>
 
 <div class="cake">
   <div class="candle">
@@ -150,13 +177,16 @@
 
 <p>
   They say you're flying without wings...<br>
-  But honestly, I think you just floated straight into my heart 😂💗<br>
+  But honestly, I think you just floated straight into my heart 💗😂<br>
   Thank you for being my favorite person since that day at Carillon Tower.
 </p>
 
-<button onclick="window.open('https://www.youtube.com/watch?v=vKPGxGCFgTs','_blank')">
-  🎵 Play Music 🎵
-</button>
+<!-- Audio autoplay (with mute toggle option for browsers that block it) -->
+<audio id="bgmusic" autoplay loop>
+  <source src="https://www.dropbox.com/scl/fi/btrd64u6yxm8yk4z7o4ta/cute-korean-happy-birthday.mp3?raw=1" type="audio/mpeg">
+</audio>
+
+<button onclick="toggleMusic()">🔊 Toggle Music</button>
 
 <div class="qr">
   <p>📍 Where it all began:</p>
@@ -165,25 +195,32 @@
 
 <div class="signature">💌 From G-boy pogi 😎</div>
 
-<footer>Made with 💖 just for you.</footer>
+<footer>Made with 💖 and lots of pink sparkles ✨</footer>
 
 <script>
-for (let i = 0; i < 15; i++) {
-  let b = document.createElement('div');
-  b.classList.add('balloon');
-  b.style.left = Math.random() * 100 + 'vw';
-  b.style.animationDuration = 5 + Math.random() * 5 + 's';
-  document.body.appendChild(b);
+const music = document.getElementById('bgmusic');
+function toggleMusic() {
+  if (music.paused) { music.play(); } else { music.pause(); }
 }
 
+// floating hearts
+setInterval(() => {
+  const h = document.createElement('div');
+  h.classList.add('heart');
+  h.style.left = Math.random() * 100 + 'vw';
+  h.style.animationDuration = 4 + Math.random() * 4 + 's';
+  document.body.appendChild(h);
+  setTimeout(() => h.remove(), 5000);
+}, 300);
+
+// sparkles
 for (let i = 0; i < 20; i++) {
-  let c = document.createElement('div');
-  c.classList.add('confetti');
-  c.style.left = Math.random() * 100 + 'vw';
-  c.style.background = ['#fff','#ffd6e7','#ff66b2','#ffb6c1'][Math.floor(Math.random()*4)];
-  c.style.animationDuration = 2 + Math.random() * 3 + 's';
-  c.style.animationDelay = Math.random() * 2 + 's';
-  document.body.appendChild(c);
+  let s = document.createElement('div');
+  s.classList.add('sparkle');
+  s.style.left = Math.random() * 100 + 'vw';
+  s.style.top = Math.random() * 100 + 'vh';
+  s.style.animationDelay = Math.random() * 2 + 's';
+  document.body.appendChild(s);
 }
 </script>
 
