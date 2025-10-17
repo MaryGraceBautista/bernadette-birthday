@@ -18,9 +18,8 @@
   }
 
   .banner {
-    position: relative;
     display: inline-block;
-    margin-top: 20px;
+    margin-top: 25px;
     background: #ff66b2;
     color: white;
     padding: 10px 25px;
@@ -38,7 +37,7 @@
 
   h1 {
     font-size: clamp(1.6em, 6vw, 2.8em);
-    margin: 50px 10px 20px;
+    margin: 40px 10px 10px;
     animation: glow 2s ease-in-out infinite alternate;
   }
 
@@ -51,7 +50,7 @@
     width: clamp(100px, 30vw, 160px);
     height: clamp(90px, 18vw, 130px);
     background: linear-gradient(to top, #ff99cc, #ffcce6);
-    margin: 40px auto 20px;
+    margin: 80px auto 20px; /* 🎂 Lowered */
     border-radius: 10px;
     position: relative;
     box-shadow: 0 10px 25px rgba(255, 102, 178, 0.4);
@@ -86,7 +85,7 @@
 
   p {
     font-size: clamp(1em, 3.5vw, 1.3em);
-    margin: 25px auto;
+    margin: 30px auto;
     line-height: 1.6em;
     max-width: 90%;
   }
@@ -96,36 +95,6 @@
     font-size: clamp(0.8em, 3vw, 1em);
     color: #a6005c;
   }
-
-  #overlay {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(255,240,250,0.97);
-    display: flex; flex-direction: column; justify-content: center; align-items: center;
-    z-index: 10;
-    padding: 20px;
-    text-align: center;
-  }
-
-  #overlay h2 {
-    font-size: clamp(1.2em, 5vw, 1.8em);
-    color: #c2185b;
-    margin-bottom: 20px;
-    animation: glow 2s ease-in-out infinite alternate;
-  }
-
-  #startBtn {
-    background: #ff66b2;
-    color: white;
-    border: none;
-    padding: 12px 22px;
-    border-radius: 15px;
-    font-size: clamp(1em, 4vw, 1.2em);
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(255, 51, 153, 0.4);
-  }
-
-  #startBtn:hover { background: #ff3385; }
 
   .confetti {
     position: absolute;
@@ -166,14 +135,13 @@
     from { transform: translateY(100vh) rotate(45deg); opacity: 1; }
     to { transform: translateY(-10vh) rotate(45deg); opacity: 0; }
   }
+
+  @media (max-width: 600px) {
+    .cake { margin: 100px auto 15px; } /* 📱 More space on small screens */
+  }
 </style>
 </head>
 <body>
-
-<div id="overlay">
-  <h2>🎉 Tap to start your birthday surprise 🎵</h2>
-  <button id="startBtn">Start 💗</button>
-</div>
 
 <div class="banner">🎈 Happy Birthday My Baby, Bernadette! 🎈</div>
 <h1>Hope You Enjoy This Day!</h1>
@@ -196,26 +164,22 @@
 </audio>
 
 <script>
-const overlay = document.getElementById('overlay');
-const startBtn = document.getElementById('startBtn');
 const music = document.getElementById('bgmusic');
 
-// Start button triggers music (works on iPhone)
-startBtn.addEventListener('click', () => {
-  overlay.style.display = 'none';
-  music.volume = 0;
-  music.play().then(() => {
-    let vol = 0;
-    const fade = setInterval(() => {
-      if (vol < 1) {
-        vol += 0.02;
-        music.volume = vol;
-      } else clearInterval(fade);
-    }, 120);
-  }).catch(err => console.log('Playback prevented:', err));
+// 🎵 Try autoplay immediately (desktop & Android)
+document.addEventListener('DOMContentLoaded', () => {
+  music.play().catch(() => {
+    // 🎧 If autoplay blocked (iPhone), wait for first tap
+    document.body.addEventListener('touchstart', playOnTap, { once: true });
+    document.body.addEventListener('click', playOnTap, { once: true });
+  });
 });
 
-// Confetti
+function playOnTap() {
+  music.play().catch(err => console.log('Playback blocked:', err));
+}
+
+// 🎊 Confetti
 for (let i = 0; i < 40; i++) {
   let c = document.createElement('div');
   c.classList.add('confetti');
@@ -226,7 +190,7 @@ for (let i = 0; i < 40; i++) {
   document.body.appendChild(c);
 }
 
-// Hearts
+// 💗 Floating hearts
 for (let i = 0; i < 20; i++) {
   let h = document.createElement('div');
   h.classList.add('heart');
